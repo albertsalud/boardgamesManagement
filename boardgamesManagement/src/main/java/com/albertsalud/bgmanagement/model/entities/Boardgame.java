@@ -20,6 +20,11 @@ public class Boardgame {
 	
 	@NotBlank
 	private String name;
+	
+	private String description;
+	
+	private String imageName;
+	
 	private int minAge;
 	private int maxAge;
 	private int minPlayers;
