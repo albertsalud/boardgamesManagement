@@ -36,7 +36,7 @@ public class BoardgameController {
 		return "boardgameForm";
 	}
 	
-	@PostMapping("/new")
+	@PostMapping("/save")
 	public String saveBoardgame(Model model,
 			@Valid @ModelAttribute Boardgame boardgame,
 			BindingResult bindingResults) {
@@ -61,6 +61,7 @@ public class BoardgameController {
 			return this.newBoardgame(model);
 		}
 		
+		System.out.println("boardgame types: " + (boardgame.getTypes() == null ? 0 : boardgame.getTypes().size()));
 		model.addAttribute("boardgame", boardgame);
 		return "boardgameForm";
 	}
