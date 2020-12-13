@@ -1,4 +1,4 @@
-package com.albertsalud.bgmanagement.model;
+package com.albertsalud.bgmanagement.model.enums;
 
 import lombok.Getter;
 

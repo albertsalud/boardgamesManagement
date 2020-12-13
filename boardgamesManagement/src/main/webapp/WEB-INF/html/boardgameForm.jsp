@@ -1,4 +1,4 @@
-<%@page import="com.albertsalud.bgmanagement.model.BoardgameType"%>
+<%@page import="com.albertsalud.bgmanagement.model.enums.BoardgameType"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -21,6 +21,9 @@ function addBoardgameType(){
 </head>
 <body>
 	<h1>Boardgame form</h1>
+	<p>
+		<a href="/boardgames">&lt; Return to boardgames list</a>
+	</p>
 	<form:form modelAttribute="boardgame" action="/boardgames/save">
 		<form:hidden path="id"/>
 		<table>

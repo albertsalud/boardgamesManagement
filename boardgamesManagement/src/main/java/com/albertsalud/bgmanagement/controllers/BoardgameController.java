@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.albertsalud.bgmanagement.model.entities.Boardgame;
 import com.albertsalud.bgmanagement.model.services.BoardgameServices;
@@ -64,5 +65,15 @@ public class BoardgameController {
 		System.out.println("boardgame types: " + (boardgame.getTypes() == null ? 0 : boardgame.getTypes().size()));
 		model.addAttribute("boardgame", boardgame);
 		return "boardgameForm";
+	}
+	
+	@GetMapping("/delete")
+	public String deleteBoardgame(
+			@RequestParam(required = false) Long boardgameId,
+			Model model
+			) {
+		boardgameServices.deleteBoardgame(boardgameId);
+		
+		return this.listBoardgames(model);
 	}
 }

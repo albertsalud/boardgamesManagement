@@ -15,7 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.validation.constraints.NotBlank;
 
-import com.albertsalud.bgmanagement.model.BoardgameType;
+import com.albertsalud.bgmanagement.model.enums.BoardgameType;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
