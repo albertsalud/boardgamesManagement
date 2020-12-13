@@ -3,7 +3,6 @@ package com.albertsalud.bgmanagement.model.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Service;
 
 import com.albertsalud.bgmanagement.model.dao.BoardgameDAO;
