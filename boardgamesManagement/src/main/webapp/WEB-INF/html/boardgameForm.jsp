@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +30,7 @@ function addBoardgameType(){
 	<p>
 		<a href="/boardgames">&lt; Return to boardgames list</a>
 	</p>
-	<form:form modelAttribute="boardgame" action="/boardgames/save">
+	<form:form modelAttribute="boardgame" action="/boardgames/save" enctype="multipart/form-data">
 		<form:hidden path="id"/>
 		<table>
 			<tr>
@@ -47,10 +48,21 @@ function addBoardgameType(){
 				</td>
 			</tr>
 			<tr>
+				<td>Image file:</td>
+				<td colspan="2">
+					<input type="file" name="image" accept="image/png, image/jpeg" />
+				</td>
+			</tr>
+			<tr>
 				<td>Image name:</td>
 				<td colspan="2">
 					<form:input path="imageName"/>
 					<form:errors path="imageName"/>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<img alt="Boardgame image" src="images/uploaded/${boardgame.imageName}">
 				</td>
 			</tr>
 			<tr>
@@ -94,15 +106,15 @@ function addBoardgameType(){
 				</td>
 			</tr>
 			<tr>
-				<td colspan="3">
-					<input type="submit" value="Save" />
-				</td>
-			</tr>
-			<tr>
 				<td>Time to play:</td>
 				<td colspan="2">
 					<form:input path="timeToPlay"/>
 					<form:errors path="timeToPlay"/>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<input type="submit" value="Save" />
 				</td>
 			</tr>
 		</table>
