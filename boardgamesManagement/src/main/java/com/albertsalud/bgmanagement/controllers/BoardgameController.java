@@ -2,6 +2,7 @@ package com.albertsalud.bgmanagement.controllers;
 
 import javax.validation.Valid;
 
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +21,6 @@ import com.albertsalud.bgmanagement.utils.FileUploadService;
 import com.albertsalud.bgmanagement.utils.FileUploadService.FileUploadServiceResult;
 
 @Controller
-@RequestMapping("/boardgames")
 public class BoardgameController {
 	
 	private static final String UPLOADED_IMAGES_FOLDER = "/uploaded/images"; 
@@ -56,9 +56,10 @@ public class BoardgameController {
 			return "boardgameForm";
 		}
 		
-		
-		FileUploadServiceResult uploadImageResult = uploadImage(image);
-		if(uploadImageResult.isOk()) boardgame.setImageName(uploadImageResult.getDestinationName());
+		if(!Strings.isEmpty(image.getOriginalFilename())) {
+			FileUploadServiceResult uploadImageResult = uploadImage(image);
+			if(uploadImageResult.isOk()) boardgame.setImageName(uploadImageResult.getDestinationName());
+		}
 		boardgameServices.saveBoardgame(boardgame);
 		
 		return this.listBoardgames(model);

@@ -1,6 +1,8 @@
 package com.albertsalud.bgmanagement.model.services;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +17,9 @@ public class BoardgameServices {
 	private BoardgameDAO boardgameDAO;
 	
 	public List<Boardgame> listBoardgames() {
-		return boardgameDAO.findAll();
+		return boardgameDAO.findAll().stream()
+				.sorted(Comparator.comparing(Boardgame::getName))
+				.collect(Collectors.toList());
 	}
 
 	
