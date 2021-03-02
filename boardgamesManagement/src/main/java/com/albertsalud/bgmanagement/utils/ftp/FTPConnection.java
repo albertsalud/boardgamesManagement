@@ -23,23 +23,24 @@ public class FTPConnection implements FTPServices{
 		ftpClient.connect(server, port);
 		System.out.println("Connected!");
 		
-		ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
-		ftpClient.enterLocalPassiveMode();
-		
 		System.out.print("Login with username " + username + "... ");
 		System.out.println(ftpClient.login(username, password));
+		
+		ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
+		ftpClient.setFileTransferMode(FTP.BINARY_FILE_TYPE);
+		ftpClient.enterLocalPassiveMode();
 	}
 	
-	public boolean uploadFile(String destinationDir, String destionationFileName, File file) {
+	public boolean uploadFile(String destinationDir, String destionationFileName, InputStream is) {
 		System.out.println("Uploading " + destionationFileName + " to " + destinationDir + "... ");
-		try (InputStream is = new FileInputStream(file)){
+			
+		try {
 			manageWorkingDirectory(destinationDir);
 			return ftpClient.storeFile(destionationFileName, is);
-			
+		
 		} catch (IOException e) {
 			e.printStackTrace();
 			return false;
-			
 		}
 		
 	}
@@ -57,22 +58,22 @@ public class FTPConnection implements FTPServices{
 		System.out.println("Disconected!");
 	}
 	
-	public static void main(String args[]) {
-		try {
-			File testFile = new File("C:\\tlc.jpg");
-			
-			if(testFile.exists()) {
-				FTPServices ftp = new FTPConnection("46.183.119.135", "daudecinc-ftp", "dd5ftpuser");
-				System.out.println("File loaded successfully..." + ftp.uploadFile("/uploaded/images", testFile.getName(), testFile));
-				ftp.disconnect();
-			
-			} else {
-				System.out.println("Specified file doesn't exist!");
-			}
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.out.println("ERROR: " + e.getMessage());
-		}
-	}
+//	public static void main(String args[]) {
+//		try {
+//			File testFile = new File("C:\\tlc.jpg");
+//			
+//			if(testFile.exists()) {
+//				FTPServices ftp = new FTPConnection("46.183.119.135", "daudecinc-ftp", "dd5ftpuser");
+//				System.out.println("File loaded successfully..." + ftp.uploadFile("/uploaded/images", testFile.getName(), testFile));
+//				ftp.disconnect();
+//			
+//			} else {
+//				System.out.println("Specified file doesn't exist!");
+//			}
+//			
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//			System.out.println("ERROR: " + e.getMessage());
+//		}
+//	}
 }

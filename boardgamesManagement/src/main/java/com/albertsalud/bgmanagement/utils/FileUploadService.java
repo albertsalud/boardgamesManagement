@@ -1,19 +1,28 @@
 package com.albertsalud.bgmanagement.utils;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.albertsalud.bgmanagement.utils.ftp.FTPConnection;
+import com.albertsalud.bgmanagement.utils.ftp.FTPServices;
 
 import lombok.Getter;
 
 @Component
 public class FileUploadService {
+	
+	@Value("${dd5.ftp.host}")
+	private String hostname;
+	
+	@Value("${dd5.ftp.username}")
+	private String username;
+	
+	@Value("${dd5.ftp.password}")
+	private String password;
+	
 	
 	@Getter
 	public class FileUploadServiceResult {
@@ -38,28 +47,19 @@ public class FileUploadService {
 		FileUploadServiceResult result = new FileUploadServiceResult(destinationFolder, destinationName,
 				file);
 		
-		try (InputStream inputStream = file.getInputStream()){
-			Path uploadPath = managePath(destinationFolder);
+		try {
+			FTPServices ftp = new FTPConnection(hostname, username, password);
+			result.ok = ftp.uploadFile(destinationFolder, destinationName, file.getInputStream());
 			
-		    Path filePath = uploadPath.resolve(destinationName);
-		    Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-		    
-		    result.ok = true;
-		    
-		} catch (IOException e) {
+			ftp.disconnect();
+		
+		} catch (IllegalStateException | IOException e) {
+			e.printStackTrace();
+			result.ok = false;
 			result.errorMessage = e.getMessage();
 		}
 		
 		return result;
-	}
-
-	private Path managePath(String destinationFolder) throws IOException {
-		Path uploadPath = Paths.get(destinationFolder);
-		if (!Files.exists(uploadPath)) {
-            Files.createDirectories(uploadPath);
-        }
-		
-		return uploadPath;
 	}
 
 }

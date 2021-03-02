@@ -54,7 +54,7 @@ function addBoardgameType(){
 				</td>
 			</tr>
 			<tr>
-				<td>Image name:</td>
+				<td>Image:</td>
 				<td colspan="2">
 					<form:input path="imageName"/>
 					<form:errors path="imageName"/>
@@ -62,7 +62,7 @@ function addBoardgameType(){
 			</tr>
 			<tr>
 				<td colspan="3">
-					<img alt="Boardgame image" src="images/uploaded/${boardgame.imageName}">
+					<img alt="Boardgame image" src="http://daudecinc.tk/uploaded/images/${boardgame.imageName}">
 				</td>
 			</tr>
 			<tr>

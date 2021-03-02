@@ -23,7 +23,7 @@ import com.albertsalud.bgmanagement.utils.FileUploadService.FileUploadServiceRes
 @RequestMapping("/boardgames")
 public class BoardgameController {
 	
-	private static final String UPLOADED_IMAGES_FOLDER = "images/uploaded/"; 
+	private static final String UPLOADED_IMAGES_FOLDER = "/uploaded/images"; 
 	
 	@Autowired
 	private BoardgameServices boardgameServices;
