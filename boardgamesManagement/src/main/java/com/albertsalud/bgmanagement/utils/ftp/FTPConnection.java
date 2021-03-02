@@ -1,7 +1,5 @@
 package com.albertsalud.bgmanagement.utils.ftp;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -10,10 +8,7 @@ import org.apache.commons.net.ftp.FTPClient;
 
 public class FTPConnection implements FTPServices{
 
-//	private String server;
 	private int port = 21;	// FTP standard port
-//	private String username;
-//	private String password;
 	
 	private FTPClient ftpClient;
 	
@@ -58,22 +53,4 @@ public class FTPConnection implements FTPServices{
 		System.out.println("Disconected!");
 	}
 	
-//	public static void main(String args[]) {
-//		try {
-//			File testFile = new File("C:\\tlc.jpg");
-//			
-//			if(testFile.exists()) {
-//				FTPServices ftp = new FTPConnection("46.183.119.135", "daudecinc-ftp", "dd5ftpuser");
-//				System.out.println("File loaded successfully..." + ftp.uploadFile("/uploaded/images", testFile.getName(), testFile));
-//				ftp.disconnect();
-//			
-//			} else {
-//				System.out.println("Specified file doesn't exist!");
-//			}
-//			
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//			System.out.println("ERROR: " + e.getMessage());
-//		}
-//	}
 }
