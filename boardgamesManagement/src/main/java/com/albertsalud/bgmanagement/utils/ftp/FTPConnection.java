@@ -1,4 +1,4 @@
-package com.albertsalud.bgmanagement.utils;
+package com.albertsalud.bgmanagement.utils.ftp;
 
 import java.io.File;
 import java.io.FileInputStream;
