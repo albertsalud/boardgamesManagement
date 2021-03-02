@@ -30,7 +30,7 @@ function addBoardgameType(){
 	<p>
 		<a href="/boardgames">&lt; Return to boardgames list</a>
 	</p>
-	<form:form modelAttribute="boardgame" action="/boardgames/save" enctype="multipart/form-data">
+	<form:form modelAttribute="boardgame" action="/boardgames/save" method="post" enctype="multipart/form-data">
 		<form:hidden path="id"/>
 		<table>
 			<tr>

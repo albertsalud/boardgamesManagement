@@ -53,7 +53,7 @@ public class BoardgameController {
 		
 		if(bindingResults.hasErrors()) {
 			model.addAttribute("boardgame", boardgame);
-			return "boardgame";
+			return "boardgameForm";
 		}
 		
 		
