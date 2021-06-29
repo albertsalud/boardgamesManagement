@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.albertsalud.bgmanagement.model.entities.Boardgame;
 import com.albertsalud.bgmanagement.model.services.BoardgameServices;
+import com.albertsalud.bgmanagement.model.services.OwnerServices;
 import com.albertsalud.bgmanagement.utils.FileUploadService;
 import com.albertsalud.bgmanagement.utils.FileUploadService.FileUploadServiceResult;
 
@@ -23,6 +24,9 @@ import com.albertsalud.bgmanagement.utils.FileUploadService.FileUploadServiceRes
 public class BoardgameController {
 	
 	private static final String UPLOADED_IMAGES_FOLDER = "/uploaded/images"; 
+	
+	@Autowired
+	private OwnerServices ownerServices;
 	
 	@Autowired
 	private BoardgameServices boardgameServices;
@@ -40,10 +44,14 @@ public class BoardgameController {
 	@GetMapping("/new")
 	public String newBoardgame(Model model) {
 		model.addAttribute("boardgame", new Boardgame());
-		
+		setOwnersListToModel(model);
 		return "boardgameForm";
 	}
 	
+	private void setOwnersListToModel(Model model) {
+		model.addAttribute("ownersList", ownerServices.listOwners());
+	}
+
 	@PostMapping("/save")
 	public String saveBoardgame(Model model,
 			@Valid @ModelAttribute Boardgame boardgame,
@@ -80,7 +88,8 @@ public class BoardgameController {
 			return this.newBoardgame(model);
 		}
 		
-		System.out.println("boardgame types: " + (boardgame.getTypes() == null ? 0 : boardgame.getTypes().size()));
+		setOwnersListToModel(model);
+		
 		model.addAttribute("boardgame", boardgame);
 		return "boardgameForm";
 	}

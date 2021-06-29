@@ -104,6 +104,14 @@ function addBoardgameType(){
 						</td>
 					</tr>
 					<tr>
+						<td>Owner:</td>
+						<td colspan="2">
+							<form:select path="owner" items="${ownersList}"  itemLabel="fullName">
+								<form:option value="">- Set the boardgame owner -</form:option>
+							</form:select>
+						</td>
+					</tr>
+					<tr>
 						<td colspan="3">
 							<input type="submit" value="Save" class="boton" />
 						</td>
