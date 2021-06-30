@@ -19,6 +19,9 @@ function askForDeleteBoardgame(){
 			<p>
 				<a href="/boardgames/new">&gt; Add a new boardgame</a>
 			</p>
+			<p>
+				<a href="/boardgames/owners">&gt; Manage owners</a>
+			</p>
 			<c:if test="${boardgames != null}">
 				<table id="data-table" cellpadding="5" cellspacing="0">
 					<tr>
