@@ -60,6 +60,7 @@ public class BoardgameController {
 		
 		if(bindingResults.hasErrors()) {
 			model.addAttribute("boardgame", boardgame);
+			setOwnersListToModel(model);
 			return "boardgameForm";
 		}
 		
