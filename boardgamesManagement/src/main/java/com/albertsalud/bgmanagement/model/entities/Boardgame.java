@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import com.albertsalud.bgmanagement.model.enums.BoardgameType;
 
@@ -35,7 +36,8 @@ public class Boardgame {
 	private String name;
 	
 	@NotBlank
-	@Column(nullable = false)
+	@Size(min = 0, max = 4000)
+	@Column(nullable = false, length = 4000)
 	private String description;
 	
 	@Column(nullable = false)

@@ -40,14 +40,14 @@ function addBoardgameType(){
 						<td>Name:</td>
 						<td colspan="2">
 							<form:input path="name"/>
-							<form:errors path="name"/>
+							<form:errors path="name" cssClass="error"/>
 						</td>
 					</tr>
 					<tr>
 						<td>Description:</td>
 						<td colspan="2">
-							<form:textarea path="description"/>
-							<form:errors path="description"/>
+							<form:textarea path="description" maxlength="4000"/>
+							<form:errors path="description" cssClass="error"/>
 						</td>
 					</tr>
 					<tr>
@@ -78,29 +78,29 @@ function addBoardgameType(){
 						<td>Ages (from - to):</td>
 						<td>
 							<form:input path="minAge"/>
-							<form:errors path="minAge"/>
+							<form:errors path="minAge" cssClass="error"/>
 						</td>
 						<td>
 							<form:input path="maxAge"/>
-							<form:errors path="maxAge"/>
+							<form:errors path="maxAge" cssClass="error"/>
 						</td>
 					</tr>
 					<tr>
 						<td>Players (min - max):</td>
 						<td>
 							<form:input path="minPlayers"/>
-							<form:errors path="minPlayers"/>
+							<form:errors path="minPlayers" cssClass="error"/>
 						</td>
 						<td>
 							<form:input path="maxPlayers"/>
-							<form:errors path="maxPlayers"/>
+							<form:errors path="maxPlayers" cssClass="error"/>
 						</td>
 					</tr>
 					<tr>
 						<td>Time to play:</td>
 						<td colspan="2">
 							<form:input path="timeToPlay"/>
-							<form:errors path="timeToPlay"/>
+							<form:errors path="timeToPlay" cssClass="error"/>
 						</td>
 					</tr>
 					<tr>
