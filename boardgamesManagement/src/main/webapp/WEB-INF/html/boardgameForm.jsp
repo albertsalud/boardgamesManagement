@@ -21,12 +21,12 @@ function addBoardgameType(){
 </script>
 <body>
 	<div id="header">
-		<c:import url="http://daudecinc.tk/menu.html" />
+		<c:import url="${applicationScope.webURL}/menu.html" />
 	</div>
 	<div id="content-wrapper">
 		<div id="content" class="admin">
 			<div id="boardgame-image" style="float: right; max-width: 500px">
-				<img style="width: 500px" alt="Boardgame image" src="http://daudecinc.tk/uploaded/images/${boardgame.imageName}">
+				<img style="width: 500px" alt="Boardgame image" src="${applicationScope.webURL}/uploaded/images/${boardgame.imageName}">
 			</div>
 			<h1>Boardgame form</h1>
 			<p>
