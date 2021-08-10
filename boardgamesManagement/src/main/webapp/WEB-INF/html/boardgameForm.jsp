@@ -98,9 +98,13 @@ function addBoardgameType(){
 					</tr>
 					<tr>
 						<td>Time to play:</td>
-						<td colspan="2">
+						<td>
 							<form:input path="timeToPlay"/>
 							<form:errors path="timeToPlay" cssClass="error"/>
+						</td>
+						<td>
+							<form:input path="maxTimeToPlay"/>
+							<form:errors path="maxTimeToPlay" cssClass="error"/>
 						</td>
 					</tr>
 					<tr>

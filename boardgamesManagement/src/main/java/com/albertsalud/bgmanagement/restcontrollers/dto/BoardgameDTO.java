@@ -20,6 +20,7 @@ public class BoardgameDTO {
 		this.name = Strings.isEmpty(bg.getName()) ? "" : bg.getName();
 		this.tags = "";
 		this.time = bg.getTimeToPlay() == null ? 0 : bg.getTimeToPlay();
+		this.maxTime = bg.getMaxTimeToPlay() == null || bg.getMaxTimeToPlay() == 0 ? bg.getTimeToPlay() : bg.getMaxTimeToPlay();
 		this.type = "";
 
 	}
@@ -32,6 +33,7 @@ public class BoardgameDTO {
 	private int maxPlayers;
 	private int minPlayers;
 	private int time;
+	private int maxTime;
 	private String type;
 	private String imagePath;
 }

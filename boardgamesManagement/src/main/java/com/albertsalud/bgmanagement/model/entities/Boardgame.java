@@ -65,6 +65,8 @@ public class Boardgame {
 	@Column(nullable = true)
 	private Integer timeToPlay;
 	
+	private Integer maxTimeToPlay;
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Owner owner;
 
