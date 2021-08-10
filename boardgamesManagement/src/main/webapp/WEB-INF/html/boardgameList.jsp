@@ -24,11 +24,13 @@ function askForDeleteBoardgame(){
 			</p>
 			<c:if test="${boardgames != null}">
 				<table id="data-table" cellpadding="5" cellspacing="0">
+					<thead>
 					<tr>
 						<th>Name</th>
 						<th>Description</th>
 						<th>&nbsp;</th>
 					</tr>
+					</thead>
 					<c:forEach items="${boardgames}" var="currentBoardgame">
 						<tr>
 							<td>${currentBoardgame.name}</td>
@@ -44,5 +46,19 @@ function askForDeleteBoardgame(){
 			<c:import url="logout.jsp" />
 		</div>
 	</div>
+	<script type="text/javascript">
+	$("#data-table").fancyTable({
+		  sortColumn:0,// column number for initial sorting
+		  sortOrder:'asc',// 'desc', 'descending', 'asc', 'ascending', -1 (descending) and 1 (ascending)
+		  sortable:true,
+		  pagination:true,// default: false
+		  pagClosest: 3,
+		  perPage: 10,
+		  globalSearchExcludeColumns:[2],
+		  paginationClass:"boton",
+		  paginationClassActive:"boton-invertido"
+		});
+
+	</script>
 </body>
 </html>

@@ -32,4 +32,5 @@
 	    	if(endDate == "") $("#endDate").val(startDate);
 	    }
 	  </script>
+	  <script type="text/javascript" src="${applicationScope.webURL}/js/fancyTable.js"></script>
 </head>
