@@ -14,12 +14,13 @@ public class BoardgameDTO {
 		this.description = Strings.isEmpty(bg.getDescription()) ? "" : bg.getDescription();
 		this.id = bg.getId();
 		this.imagePath = Strings.isEmpty(bg.getImageName()) ? "" : bg.getImageName();
-		this.maxPlayers = bg.getMaxAge() == null ? 0 : bg.getMaxAge();
-		this.minAge = bg.getMinAge() == null ? 0 : bg.getMinAge();;
-		this.minPlayers = bg.getMinPlayers() == null ? 0 : bg.getMinPlayers();;
+		this.maxPlayers = bg.getMaxPlayers() == null ? 0 : bg.getMaxPlayers();
+		this.minAge = bg.getMinAge() == null ? 0 : bg.getMinAge();
+		this.minPlayers = bg.getMinPlayers() == null ? 0 : bg.getMinPlayers();
 		this.name = Strings.isEmpty(bg.getName()) ? "" : bg.getName();
 		this.tags = "";
-		this.time = bg.getTimeToPlay() == null ? 0 : bg.getTimeToPlay();;
+		this.time = bg.getTimeToPlay() == null ? 0 : bg.getTimeToPlay();
+		this.maxTime = bg.getMaxTimeToPlay() == null || bg.getMaxTimeToPlay() == 0 ? bg.getTimeToPlay() : bg.getMaxTimeToPlay();
 		this.type = "";
 
 	}
@@ -32,6 +33,7 @@ public class BoardgameDTO {
 	private int maxPlayers;
 	private int minPlayers;
 	private int time;
+	private int maxTime;
 	private String type;
 	private String imagePath;
 }
